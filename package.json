@@ -18,7 +18,9 @@
     "test": "npm run build && node --experimental-strip-types --test tests/*.test.ts packages/*/tests/*.test.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm test"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test",
+    "prepack:packages": "node --input-type=module -e \"import { rmSync, mkdirSync } from 'node:fs'; rmSync('.release', { recursive: true, force: true }); mkdirSync('.release')\"",
+    "pack:packages": "npm pack --workspace packages/create-framestack-app --workspace packages/crud --workspace packages/error --workspace packages/eslint --workspace packages/framestack --workspace packages/kysely-db --workspace packages/kysely-db-pg --workspace packages/kysely-db-pglite --workspace packages/kysely-db-sqlite --ignore-scripts --pack-destination .release"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

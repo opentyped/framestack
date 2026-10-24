@@ -1,0 +1,41 @@
+name: Publish to npm
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Set versions from the tag
+        run: node scripts/version.mjs "$RELEASE_TAG"
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+      - run: npm run check
+      - run: npm run pack:packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          scope: "@opentyped"
+      - name: Publish validated packages to npm
+        run: |
+          npm_tag=latest
+          if [[ "$RELEASE_TAG" == *-* ]]; then npm_tag=next; fi
+          for archive in ./.release/*.tgz; do
+            npm publish "$archive" --registry https://registry.npmjs.org --access public --ignore-scripts --tag "$npm_tag"
+          done
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_name }}
