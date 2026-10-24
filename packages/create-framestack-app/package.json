@@ -1,0 +1,23 @@
+{
+  "name": "create-framestack-app",
+  "version": "0.1.0",
+  "description": "Create a framestack app: Express, React Server Components, typed SQL, and OpenAPI.",
+  "type": "module",
+  "bin": {
+    "create-framestack-app": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/template.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "15.0.0"
+  }
+}

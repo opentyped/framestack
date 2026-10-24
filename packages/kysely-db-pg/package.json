@@ -1,0 +1,34 @@
+{
+  "name": "@opentyped/framestack-kysely-db-pg",
+  "version": "0.1.0",
+  "description": "postgres:// driver for @opentyped/framestack-kysely-db (node-postgres).",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@opentyped/framestack-kysely-db": "0.1.0",
+    "@opentyped/odb-adapters-pg": "0.1.1"
+  },
+  "peerDependencies": {
+    "kysely": "^0.28.0",
+    "pg": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/pg": "8.23.1",
+    "pg": "8.23.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "license": "MIT"
+}

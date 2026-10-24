@@ -1,0 +1,182 @@
+{
+  "components": {
+    "schemas": {
+      "db.Todo": {
+        "additionalProperties": false,
+        "properties": {
+          "done": {
+            "type": "number"
+          },
+          "id": {
+            "$ref": "#/components/schemas/db.TodoId"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "done"
+        ],
+        "type": "object"
+      },
+      "db.TodoId": {
+        "type": "number"
+      }
+    }
+  },
+  "info": {
+    "title": "Todos",
+    "version": "1.0.0"
+  },
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "openapi": "3.2.0",
+  "paths": {
+    "/api/todos": {
+      "get": {
+        "operationId": "listTodos",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/db.Todo"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "All todos"
+          }
+        },
+        "tags": [
+          "Todos"
+        ]
+      },
+      "post": {
+        "operationId": "createTodo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db.Todo"
+                }
+              }
+            },
+            "description": "The created todo"
+          }
+        },
+        "tags": [
+          "Todos"
+        ]
+      }
+    },
+    "/api/todos/{id}": {
+      "get": {
+        "operationId": "getTodo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db.Todo"
+                }
+              }
+            },
+            "description": "The todo"
+          },
+          "404": {
+            "description": "No todo with this id"
+          }
+        },
+        "tags": [
+          "Todos"
+        ]
+      },
+      "patch": {
+        "operationId": "updateTodo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "done": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "done"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/db.Todo"
+                }
+              }
+            },
+            "description": "The updated todo"
+          },
+          "404": {
+            "description": "No todo with this id"
+          }
+        },
+        "tags": [
+          "Todos"
+        ]
+      }
+    }
+  }
+}

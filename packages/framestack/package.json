@@ -1,0 +1,23 @@
+{
+  "name": "framestack",
+  "version": "0.1.0",
+  "description": "The framestack CLI: generate database types and models.",
+  "type": "module",
+  "bin": {
+    "framestack": "./dist/cli.js"
+  },
+  "dependencies": {
+    "@opentyped/framestack-kysely-db": "0.1.0",
+    "commander": "15.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "license": "MIT"
+}

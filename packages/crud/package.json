@@ -1,0 +1,39 @@
+{
+  "name": "@opentyped/framestack-crud",
+  "version": "0.1.0",
+  "description": "A mountable CRUD API for any table, driven by framestack's generated table info.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@opentyped/framestack-error": "0.1.0",
+    "@opentyped/framestack-kysely-db": "0.1.0"
+  },
+  "peerDependencies": {
+    "express": "^5.0.0",
+    "kysely": "^0.28.0"
+  },
+  "devDependencies": {
+    "kysely": "0.28.18",
+    "@opentyped/framestack-kysely-db-pglite": "0.1.0",
+    "@opentyped/framestack-kysely-db-sqlite": "0.1.0"
+  },
+  "license": "MIT"
+}

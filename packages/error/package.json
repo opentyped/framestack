@@ -1,0 +1,22 @@
+{
+  "name": "@opentyped/framestack-error",
+  "version": "0.1.0",
+  "description": "One coded error for servers and clients, with a JSON form for HTTP bodies.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "license": "MIT"
+}

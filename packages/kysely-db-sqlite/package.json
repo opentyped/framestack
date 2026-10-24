@@ -1,0 +1,30 @@
+{
+  "name": "@opentyped/framestack-kysely-db-sqlite",
+  "version": "0.1.0",
+  "description": "sqlite:// driver for @opentyped/framestack-kysely-db (node:sqlite).",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@opentyped/framestack-error": "0.1.0",
+    "@opentyped/framestack-kysely-db": "0.1.0",
+    "@opentyped/odb-adapters-sqlite": "0.1.1"
+  },
+  "peerDependencies": {
+    "kysely": "^0.28.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@opentyped/framestack-eslint",
+  "version": "0.1.0",
+  "description": "framestack ESLint config: TypeScript, sorted imports, Prettier, and layout rules for src/.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/estree": "1.0.9",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.7",
+    "eslint-plugin-simple-import-sort": "14.0.0",
+    "typescript-eslint": "8.72.0"
+  },
+  "peerDependencies": {
+    "eslint": "^10.0.0",
+    "prettier": "^3.0.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "license": "MIT"
+}

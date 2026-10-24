@@ -1,0 +1,45 @@
+{
+  "name": "framestack-example",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "express-rsc",
+    "build": "vite build",
+    "start": "node dist/index.js",
+    "generate": "framestack generate",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@opentyped/framestack-error": "0.1.0",
+    "@opentyped/framestack-kysely-db": "0.1.0",
+    "@opentyped/framestack-kysely-db-sqlite": "0.1.0",
+    "@opentyped/oapi-fetch": "0.5.0",
+    "express": "5.2.1",
+    "kysely": "0.28.18",
+    "pino": "10.4.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router": "8.5.0",
+    "react-server-dom-webpack": "19.2.8",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@opentyped/framestack-eslint": "0.1.0",
+    "@opentyped/oapi-compiler": "0.5.0",
+    "@opentyped/oapi-vite": "0.5.0",
+    "@opentyped/vite-express-rsc": "0.2.1",
+    "@opentyped/vite-express-rsc-oapi": "0.2.0",
+    "@types/express": "5.0.6",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.3",
+    "eslint": "10.13.0",
+    "framestack": "0.1.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "vite": "8.3.5"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "framestack-workspace",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "example"
+  ],
+  "scripts": {
+    "build": "npm run build -w packages/eslint -w packages/error -w packages/kysely-db -w packages/kysely-db-sqlite -w packages/kysely-db-pg -w packages/kysely-db-pglite -w packages/crud -w packages/framestack -w packages/create-framestack-app",
+    "dev": "npm run dev -w example",
+    "generate": "npm run generate -w example",
+    "lint": "npm run lint -w example",
+    "typecheck": "tsc --noEmit && tsc -p example --noEmit",
+    "test": "npm run build && node --experimental-strip-types --test tests/*.test.ts packages/*/tests/*.test.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "@types/express": "5.0.6",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.3",
+    "eslint": "10.13.0",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "@opentyped/odb-db": "file:../odb/packages/db",
+    "@opentyped/odb-kysely": "file:../odb/packages/kysely",
+    "@opentyped/odb-models": "file:../odb/packages/models",
+    "@opentyped/odb-adapters-pg": "file:../odb/packages/adapters/pg",
+    "@opentyped/odb-adapters-sqlite": "file:../odb/packages/adapters/sqlite",
+    "@opentyped/oapi-fetch": "file:../oapi/packages/fetch",
+    "@opentyped/vite-express-rsc": "file:../vite-express-rsc/packages/vite-express-rsc",
+    "@opentyped/oapi-compiler": "file:../oapi/packages/compiler"
+  }
+}

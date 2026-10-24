@@ -1,0 +1,45 @@
+{
+  "name": "@opentyped/framestack-kysely-db",
+  "version": "0.1.0",
+  "description": "Kysely over a pool chosen by DB_URL, request-scoped logging, and model generation.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./tables": {
+      "types": "./dist/tables.d.ts",
+      "default": "./dist/tables.js"
+    },
+    "./generate": {
+      "types": "./dist/generate.d.ts",
+      "default": "./dist/generate.js"
+    }
+  },
+  "dependencies": {
+    "@opentyped/framestack-error": "0.1.0",
+    "@opentyped/odb-db": "0.1.1",
+    "@opentyped/odb-kysely": "0.1.1",
+    "@opentyped/odb-models": "0.1.1"
+  },
+  "peerDependencies": {
+    "kysely": "^0.28.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.11",
+    "@electric-sql/pglite-socket": "0.2.14",
+    "kysely": "0.28.18",
+    "pg": "8.23.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "license": "MIT"
+}
